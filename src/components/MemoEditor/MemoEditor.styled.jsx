@@ -17,4 +17,5 @@ export const Textarea = styled.textarea`
   all: unset;
   flex-grow: 1;
   font-size: 15px;
+  line-height: 1.66;
 `;

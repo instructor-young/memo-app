@@ -6,6 +6,7 @@ export const Wrapper = styled.aside`
   overflow-y: auto;
   display: grid;
   grid-template-columns: 1fr;
+  align-content: flex-start;
 `;
 
 export const Header = styled.header`
@@ -43,4 +44,5 @@ export const List = styled.ul`
   align-content: flex-start;
   row-gap: 8px;
   margin: 0;
+  overflow-x: hidden;
 `;
