@@ -1,17 +1,17 @@
 export function formatDateTime(dateTime, longOrShort) {
-  const date = dateTime ? new Date(dateTime) : new Date();
-  const isAfterNoon = date.getHours() >= 12;
+  dateTime = dateTime ? new Date(dateTime) : new Date();
+  const isAfterNoon = dateTime.getHours() >= 12;
+  const 오전or오후 = isAfterNoon ? "오후" : "오전";
+  const fullYear = dateTime.getFullYear();
+  const month = dateTime.getMonth() + 1;
+  const date = dateTime.getDate();
+  const hours = dateTime.getHours() - (isAfterNoon ? 12 : 0);
+  const minutes = dateTime.getMinutes().toString().padStart(2, "0");
 
   if (longOrShort === "short") {
-    return `${isAfterNoon ? "오후" : "오전"} ${
-      new Date(date).getHours() - (isAfterNoon ? 12 : 0)
-    }:${String(new Date(date).getMinutes())}`;
+    return `${오전or오후} ${hours}:${minutes}`;
   } else if (longOrShort === "long") {
-    return `${date.getFullYear()}년 ${
-      date.getMonth() + 1
-    }월 ${date.getDate()}일, ${
-      isAfterNoon ? "오후" : "오전"
-    } ${date.getHours()}:${date.getMinutes()}`;
+    return `${fullYear}년 ${month}월 ${date}일, ${오전or오후} ${hours}:${minutes}`;
   } else {
     return alert("wrong args");
   }
