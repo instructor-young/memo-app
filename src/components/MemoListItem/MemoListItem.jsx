@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { SELECT_MEMO } from "../../redux/reducers/memo.reducer";
+import { formatDateTime } from "../../utils/formatDateTime";
 import { Title, UpdatedAt, Wrapper } from "./MemoListItem.styled";
 
 function MemoListItem({ memo }) {
@@ -11,13 +12,7 @@ function MemoListItem({ memo }) {
         ? memo.content.trim().slice(0, 14)
         : memo.content.trim().slice(0, 14) + "..."
       : "새로운 메모";
-  const isAfterNoon = new Date(memo.updatedAt).getHours() >= 12;
-  const updatedAt = `${isAfterNoon ? "오후" : "오전"} ${new Date(
-    memo.updatedAt
-  ).getHours()}:${String(new Date(memo.updatedAt).getMinutes()).padStart(
-    2,
-    "0"
-  )}`;
+  const updatedAt = formatDateTime(memo.updatedAt, "short");
 
   const handleClick = () => {
     const action = { type: SELECT_MEMO, payload: { memoId: memo.id } };

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_MEMO } from "../../redux/reducers/memo.reducer";
+import { formatDateTime } from "../../utils/formatDateTime";
 import { Textarea, UpdatedAt, Wrapper } from "./MemoEditor.styled";
 
 function MemoEditor() {
@@ -9,15 +10,7 @@ function MemoEditor() {
   const selectedMemoId = useSelector((state) => state.memo.selectedMemoId);
   const memos = useSelector((state) => state.memo.memos);
   const selectedMemo = memos.find((memo) => memo.id === selectedMemoId);
-  const updatedAt = selectedMemo
-    ? new Date(selectedMemo.updatedAt)
-    : new Date();
-  const isAfterNoon = updatedAt.getHours() >= 12;
-  const dateTime = `${updatedAt.getFullYear()}년 ${
-    updatedAt.getMonth() + 1
-  }월 ${updatedAt.getDate()}일, ${
-    isAfterNoon ? "오후" : "오전"
-  } ${updatedAt.getHours()}:${updatedAt.getMinutes()}`;
+  const updatedAt = formatDateTime(selectedMemo?.updatedAt, "long");
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -39,7 +32,7 @@ function MemoEditor() {
 
   return (
     <Wrapper>
-      <UpdatedAt dateTime={updatedAt.toISOString()}>{dateTime}</UpdatedAt>
+      <UpdatedAt dateTime={selectedMemo.updatedAt}>{updatedAt}</UpdatedAt>
       <Textarea autoFocus ref={textareaRef} onChange={handleChange} />
     </Wrapper>
   );
