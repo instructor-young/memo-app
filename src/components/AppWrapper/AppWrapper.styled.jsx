@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.main`
   display: grid;
-  grid-template-columns: 240px 500px;
+  grid-template-columns: 240px 1fr;
   background-color: rgb(255, 255, 255);
   margin: 0 auto;
   height: 500px;
