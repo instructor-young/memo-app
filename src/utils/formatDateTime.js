@@ -3,9 +3,9 @@ export function formatDateTime(dateTime, longOrShort) {
   const isAfterNoon = date.getHours() >= 12;
 
   if (longOrShort === "short") {
-    return `${isAfterNoon ? "오후" : "오전"} ${new Date(
-      date
-    ).getHours()}:${String(new Date(date).getMinutes())}`;
+    return `${isAfterNoon ? "오후" : "오전"} ${
+      new Date(date).getHours() - (isAfterNoon ? 12 : 0)
+    }:${String(new Date(date).getMinutes())}`;
   } else if (longOrShort === "long") {
     return `${date.getFullYear()}년 ${
       date.getMonth() + 1
