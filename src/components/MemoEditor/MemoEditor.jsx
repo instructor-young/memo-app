@@ -14,7 +14,6 @@ function MemoEditor() {
 
   useEffect(() => {
     if (textareaRef.current) {
-      console.log(selectedMemo, selectedMemoId);
       textareaRef.current.focus();
       textareaRef.current.value = selectedMemo?.content || "";
     }

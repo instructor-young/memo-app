@@ -59,7 +59,6 @@ const memoReducer = (prevState = initialState, action) => {
               : prevMemo,
           { updatedAt: 0 }
         );
-      console.log("memoToSelect", memoToSelect);
 
       return {
         selectedMemoId: memoToSelect.id,
