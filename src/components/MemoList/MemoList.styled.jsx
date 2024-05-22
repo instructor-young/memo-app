@@ -22,7 +22,7 @@ export const Header = styled.header`
 
 export const Button = styled.button`
   all: unset;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   transition: all 120ms;
   padding: 4px 8px;
