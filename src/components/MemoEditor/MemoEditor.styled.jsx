@@ -7,7 +7,7 @@ export const Wrapper = styled.article`
   width: 100%;
 `;
 
-export const UpdatedAt = styled.span`
+export const UpdatedAt = styled.time`
   color: rgb(128, 128, 128);
   font-size: 10px;
   margin: 0 auto 24px;
